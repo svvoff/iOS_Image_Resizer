@@ -15,10 +15,6 @@ os.system("cp " + file + " " + fileCopyPath)
 i = 1
 
 while i < 4:
-    newFileName = fileName + "_" + str(i) + ext
-    newFilePath = fileDir + "/" + newFileName
-    print(newFilePath)
-    os.system("cp " + fileCopyPath + " " + newFilePath)
 
     res = maxResolution
 
@@ -26,6 +22,13 @@ while i < 4:
         res = maxResolution / 3
     if i == 2:
         res = maxResolution * 2 / 3
+
+    newFileName = fileName + "_" + str(int(res)) + "@" + str(i) + ext
+    newFilePath = fileDir + "/" + newFileName
+    print(newFilePath)
+    os.system("cp " + fileCopyPath + " " + newFilePath)
+
+
 
     os.system("sips " + newFilePath + " --resampleHeight " + str(res))
 
