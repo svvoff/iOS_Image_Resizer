@@ -8,7 +8,7 @@ maxResolution = int(input("max image height: "))
 
 fileCopyName = fileName + "_copy"
 
-fileCopyPath = fileDir + "/" + fileCopyName
+fileCopyPath = fileDir + "/" + fileCopyName + ext
 
 os.system("cp " + file + " " + fileCopyPath)
 
