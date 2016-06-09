@@ -6,13 +6,19 @@ fileDir = os.path.dirname(os.path.abspath(file))
 fileName, ext = os.path.splitext(os.path.basename(file))
 maxResolution = int(input("max image height: "))
 
+fileCopyName = fileName + "_copy"
+
+fileCopyPath = fileDir + "/" + fileCopyName
+
+os.system("cp " + file + " " + fileCopyPath)
+
 i = 1
 
 while i < 4:
-    newFileName = fileName + str(i) + ext
+    newFileName = fileName + "_" + str(i) + ext
     newFilePath = fileDir + "/" + newFileName
     print(newFilePath)
-    os.system("cp " + file + " " + newFilePath)
+    os.system("cp " + fileCopyPath + " " + newFilePath)
 
     res = maxResolution
 
