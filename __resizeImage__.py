@@ -1,32 +1,29 @@
 import os
-import glob
 
-variable = raw_input('type file name: ')
-maxres = int(input('input max h resolution: '))
-print(variable)
-print(os.path.dirname(os.path.realpath(__file__)))
 
-startFile = ""
-
-for file in glob.glob(variable + ".png"):
-    print(file)
-    startFile = file
+file = input("file path: ")
+fileDir = os.path.dirname(os.path.abspath(file))
+fileName, ext = os.path.splitext(os.path.basename(file))
+maxResolution = int(input("max image height: "))
 
 i = 1
+
 while i < 4:
-    newFileName = variable + str(i) + ".png"
-    b = "cp " + startFile + " " + newFileName
-    os.system(b)
-    res = maxres
+    newFileName = fileName + str(i) + ext
+    newFilePath = fileDir + "/" + newFileName
+    print(newFilePath)
+    os.system("cp " + file + " " + newFilePath)
+
+    res = maxResolution
+
     if i == 1:
-        res = maxres / 3
+        res = maxResolution / 3
     if i == 2:
-        res = maxres / 2
-    sip = "sips " + newFileName + " --resampleHeight " + str(res)
+        res = maxResolution * 2 / 3
 
-    os.system(sip)
+    os.system("sips " + newFilePath + " --resampleHeight " + str(res))
 
-    i = i + 1
+    i += 1
 
-#scriptName = os.path.basename(__file__)
-#os.system("rm " + scriptName + ".py")
+
+
